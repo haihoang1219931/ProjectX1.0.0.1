@@ -1,0 +1,32 @@
+﻿Build started 7/13/2016 4:47:19 AM.
+     1>Project "E:\StuffProject\ProjectX1.0.0.1\ProjectX1.0.0.1\ProjectX1.0.0.1.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"../I[Common]" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt commandline.cpp config.cpp core.cpp filesearcher.cpp httpapi.cpp keylogger.cpp main_projectx.cpp remotescript.cpp screenshot.cpp
+         screenshot.cpp
+         remotescript.cpp
+         main_projectx.cpp
+         keylogger.cpp
+         httpapi.cpp
+         filesearcher.cpp
+         core.cpp
+     1>e:\stuffproject\projectx1.0.0.1\projectx1.0.0.1\core.cpp(104): warning C4101: 'time' : unreferenced local variable
+         config.cpp
+         commandline.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\StuffProject\ProjectX1.0.0.1\Debug\ProjectX1.0.0.1.dll" /INCREMENTAL /NOLOGO /LIBPATH:../Debug common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\StuffProject\ProjectX1.0.0.1\Debug\ProjectX1.0.0.1.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\StuffProject\ProjectX1.0.0.1\Debug\ProjectX1.0.0.1.lib" /MACHINE:X86 /DLL Debug\commandline.obj
+         Debug\config.obj
+         Debug\core.obj
+         Debug\filesearcher.obj
+         Debug\httpapi.obj
+         Debug\keylogger.obj
+         Debug\main_projectx.obj
+         Debug\remotescript.obj
+         Debug\screenshot.obj
+            Creating library E:\StuffProject\ProjectX1.0.0.1\Debug\ProjectX1.0.0.1.lib and object E:\StuffProject\ProjectX1.0.0.1\Debug\ProjectX1.0.0.1.exp
+         ProjectX1.0.0.1.vcxproj -> E:\StuffProject\ProjectX1.0.0.1\Debug\ProjectX1.0.0.1.dll
+     1>Done Building Project "E:\StuffProject\ProjectX1.0.0.1\ProjectX1.0.0.1\ProjectX1.0.0.1.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.21

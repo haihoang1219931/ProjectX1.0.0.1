@@ -1,0 +1,31 @@
+﻿Build started 7/12/2016 4:15:12 AM.
+     1>Project "E:\StuffProject\ProjectX1.0.0.1\Common\Common.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt crypt.cpp file.cpp maincommon.cpp os.cpp regedit.cpp string.cpp time.cpp user.cpp
+         user.cpp
+         time.cpp
+         string.cpp
+         regedit.cpp
+     1>e:\stuffproject\projectx1.0.0.1\common\regedit.cpp(30): warning C4018: '>' : signed/unsigned mismatch
+     1>e:\stuffproject\projectx1.0.0.1\common\regedit.cpp(70): warning C4018: '>' : signed/unsigned mismatch
+         os.cpp
+         maincommon.cpp
+     1>e:\stuffproject\projectx1.0.0.1\common\maincommon.cpp(37): warning C4101: 'cpostDataEncrypted' : unreferenced local variable
+         file.cpp
+         crypt.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"E:\StuffProject\ProjectX1.0.0.1\Debug\Common.lib" /NOLOGO Debug\crypt.obj
+         Debug\file.obj
+         Debug\maincommon.obj
+         Debug\os.obj
+         Debug\regedit.obj
+         Debug\string.obj
+         Debug\time.obj
+         Debug\user.obj
+         Common.vcxproj -> E:\StuffProject\ProjectX1.0.0.1\Debug\Common.lib
+     1>Done Building Project "E:\StuffProject\ProjectX1.0.0.1\Common\Common.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.34
