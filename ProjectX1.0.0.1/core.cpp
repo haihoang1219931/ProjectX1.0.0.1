@@ -101,10 +101,10 @@ DWORD Core::_install(){
 		// create bot id
 
 		char dataHash[1024];
-		char time[MAX_TIME];
+		//char time[MAX_TIME];
 		char user[MAX_USER_NAME];
 		char os[MAX_OS_NAME];
-		Time::getTime(dataHash);
+		//Time::getTime(dataHash);
 		User::_getUserName(user);
 		OS::_getOS(os);
 		//printf(data)

